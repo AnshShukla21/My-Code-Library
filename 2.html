@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>My Code Library</title>
+<link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+<!-- 🎥 Background Video -->
+<video autoplay muted loop id="bg-video">
+    <source src="bac.mp4" type="video/mp4">
+</video>
+
+<header class="header">
+    <h1>💻 My Code Library</h1>
+    <p>Store & Explore Your Codes 🚀</p>
+</header>
+
+<div class="main">
+
+    <!-- CARDS -->
+    <div class="container">
+
+        <div class="card" onclick="openPage('portfolio')">
+            <h2>Portfolio Code</h2>
+        </div>
+
+        <div class="card" onclick="openPage('login')">
+            <h2>Login Page</h2>
+        </div>
+
+        <div class="card" onclick="openPage('navbar')">
+            <h2>Navbar Code</h2>
+        </div>
+
+    </div>
+
+    <!-- NOTES -->
+    <div class="notes-section">
+        <h2>📝 Notes</h2>
+
+        <textarea id="noteInput" placeholder="Write note..."></textarea>
+        <button onclick="addNote()">Add Note</button>
+
+        <div id="notesList"></div>
+    </div>
+
+</div>
+
+<script>
+
+// Load notes
+window.onload = function(){
+    let saved = JSON.parse(localStorage.getItem("notes")) || [];
+    saved.forEach(n => createNote(n));
+};
+
+// Add note
+function addNote(){
+    let input = document.getElementById("noteInput");
+    let text = input.value.trim();
+    if(text === "") return;
+
+    createNote(text);
+    saveNotes();
+    input.value = "";
+}
+
+// Create note
+function createNote(text){
+    let div = document.createElement("div");
+    div.className = "note";
+
+    div.innerHTML = `
+        <span>${text}</span>
+        <button onclick="deleteNote(this)">❌</button>
+    `;
+
+    document.getElementById("notesList").appendChild(div);
+}
+
+// Delete
+function deleteNote(btn){
+    btn.parentElement.remove();
+    saveNotes();
+}
+
+// Save
+function saveNotes(){
+    let notes = [];
+    document.querySelectorAll(".note span").forEach(n=>{
+        notes.push(n.innerText);
+    });
+    localStorage.setItem("notes", JSON.stringify(notes));
+}
+
+// Card click
+function openPage(type){
+    alert("Opening " + type + "...");
+}
+
+</script>
+
+</body>
+</html>

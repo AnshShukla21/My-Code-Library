@@ -1,0 +1,203 @@
+*{
+margin:0;
+padding:0;
+box-sizing:border-box;
+font-family:'Segoe UI';
+}
+
+body{
+color:white;
+overflow-x:hidden;
+}
+
+/* 🎥 VIDEO BACKGROUND */
+#bg-video{
+position:fixed;
+top:0;
+left:0;
+width:100%;
+height:100%;
+object-fit:cover;
+z-index:-2;
+}
+
+/* DARK OVERLAY */
+body::before{
+content:"";
+position:fixed;
+top:0;
+left:0;
+width:100%;
+height:100%;
+background:rgba(0,0,0,0.6);
+z-index:-1;
+}
+
+/* HEADER */
+.header{
+padding:20px;
+text-align:center;
+background:rgba(30,41,59,0.8);
+backdrop-filter:blur(10px);
+}
+
+/* MAIN */
+.main{
+display:flex;
+gap:20px;
+padding:20px;
+}
+
+/* ================= CARDS ================= */
+.container{
+flex:3;
+display:flex;
+gap:20px;
+flex-wrap:wrap;
+justify-content:center;
+}
+
+.card{
+background:rgba(30,41,59,0.7);
+backdrop-filter:blur(10px);
+width:180px;
+height:200px;
+border-radius:15px;
+display:flex;
+flex-direction:column;
+justify-content:center;
+align-items:center;
+text-align:center;
+cursor:pointer;
+transition:0.3s;
+flex-shrink:0;
+border:2px solid #38bdf8;
+box-shadow:0 0 15px #38bdf8;
+}
+
+/* ICONS */
+.card::before{
+font-size:40px;
+margin-bottom:10px;
+}
+.card:nth-child(1)::before{ content:"🎨"; }
+.card:nth-child(2)::before{ content:"🔐"; }
+.card:nth-child(3)::before{ content:"📌"; }
+
+/* HOVER */
+.card:hover{
+transform:translateY(-10px) scale(1.05);
+box-shadow:0 0 25px #38bdf8;
+}
+
+/* ================= NOTES ================= */
+.notes-section{
+flex:1;
+background:rgba(30,41,59,0.8);
+backdrop-filter:blur(10px);
+padding:15px;
+border-radius:15px;
+display:flex;
+flex-direction:column;
+min-width:250px;
+max-height:500px;
+}
+
+.notes-section textarea{
+height:70px;
+padding:10px;
+border-radius:8px;
+border:none;
+outline:none;
+resize:none;
+background:#334155;
+color:white;
+}
+
+.notes-section button{
+margin-top:8px;
+padding:8px;
+border:none;
+border-radius:8px;
+background:#38bdf8;
+cursor:pointer;
+transition:0.3s;
+}
+
+.notes-section button:hover{
+background:#0ea5e9;
+}
+
+/* NOTES LIST */
+#notesList{
+margin-top:10px;
+overflow-y:auto;
+flex:1;
+}
+
+.note{
+background:#334155;
+padding:10px;
+margin-top:8px;
+border-radius:8px;
+display:flex;
+justify-content:space-between;
+align-items:center;
+}
+
+.note span{
+max-width:70%;
+word-break:break-word;
+}
+
+.note button{
+background:red;
+color:white;
+border:none;
+border-radius:5px;
+padding:4px 6px;
+cursor:pointer;
+}
+
+/* ================= RESPONSIVE ================= */
+
+/* 📱 MOBILE */
+@media (max-width: 768px){
+
+.main{
+flex-direction:column;
+}
+
+.container{
+justify-content:center;
+}
+
+.card{
+width:100%;
+max-width:260px;
+height:180px;
+}
+
+.notes-section{
+width:100%;
+max-height:none;
+}
+
+}
+
+/* 📲 SMALL MOBILE */
+@media (max-width: 480px){
+
+.header h1{
+font-size:20px;
+}
+
+.header p{
+font-size:12px;
+}
+
+.card{
+height:160px;
+}
+
+}
