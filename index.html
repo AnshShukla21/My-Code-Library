@@ -1,3 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>My Code Library</title>
+<link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+<!-- 🎥 Background Video -->
+<video autoplay muted loop id="bg-video">
+    <source src="bac.mp4" type="video/mp4">
+</video>
+
+<header class="header">
+    <h1>💻 My Code Library</h1>
+    <p>Store & Explore Your Codes 🚀</p>
+</header>
+
+<div class="main">
+
+    <!-- CARDS -->
+    <div class="container">
+
+        <!-- ✅ Portfolio Clickable -->
+        <a href="portfolio.pdf" target="_blank" class="card">
+            <h2>Portfolio Code</h2>
+        </a>
+
+        <!-- Login -->
+        <a href="login.html" target="_blank" class="card">
+            <h2>Login Page</h2>
+        </a>
+
+        <!-- Navbar -->
+        <a href="navbar.html" target="_blank" class="card">
+            <h2>Navbar Code</h2>
+        </a>
+
+    </div>
+
+    <!-- NOTES -->
+    <div class="notes-section">
+        <h2>📝 Notes</h2>
+
+        <textarea id="noteInput" placeholder="Write note..."></textarea>
+        <button onclick="addNote()">Add Note</button>
+
+        <div id="notesList"></div>
+    </div>
+
+</div>
+
 <script>
 
 // Load notes
@@ -30,13 +85,13 @@ function createNote(text){
     document.getElementById("notesList").appendChild(div);
 }
 
-// Delete
+// Delete note
 function deleteNote(btn){
     btn.parentElement.remove();
     saveNotes();
 }
 
-// Save
+// Save notes
 function saveNotes(){
     let notes = [];
     document.querySelectorAll(".note span").forEach(n=>{
@@ -45,20 +100,7 @@ function saveNotes(){
     localStorage.setItem("notes", JSON.stringify(notes));
 }
 
-// 🔥 Card click (UPDATED)
-function openPage(type){
-
-    if(type === "portfolio"){
-        window.open("portfolio.pdf", "_blank"); // 👈 yaha apni file ka naam daalo
-    }
-
-    else if(type === "login"){
-        window.open("login.html", "_blank");
-    }
-
-    else if(type === "navbar"){
-        window.open("navbar.html", "_blank");
-    }
-}
-
 </script>
+
+</body>
+</html>
