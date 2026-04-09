@@ -1,3 +1,4 @@
+/* RESET */
 *{
 margin:0;
 padding:0;
@@ -55,9 +56,15 @@ display:flex;
 gap:20px;
 flex-wrap:wrap;
 justify-content:center;
-font-color:White;
 }
 
+/* 🔥 Anchor reset (IMPORTANT) */
+.container a{
+text-decoration:none;
+color:inherit;
+}
+
+/* CARD */
 .card{
 background:rgba(30,41,59,0.7);
 backdrop-filter:blur(10px);
